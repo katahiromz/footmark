@@ -46,7 +46,7 @@
     ~FootmarkLocation() { if (m_flag) { Leave(); } }
     void Enter();
     void Leave();
-  };
+  }; // struct FootmarkLocation
 
   typedef std::vector<FootmarkLocation>   FootmarkStackType;
   inline FootmarkStackType& GetFootmarkStack() {
@@ -87,10 +87,10 @@
     FootmarkLocation \
       object_for_debugging_##__LINE__(__FILE__, __LINE__, __func__);
   #define FOOTMARK_PRINT_CALL_STACK() FootmarkPrintCallStack()
-#else
+#else   // def NDEBUG
   #define FOOTMARK()                  /*empty*/
   #define FOOTMARK_PRINT_CALL_STACK() /*empty*/
-#endif
+#endif  // def NDEBUG
 
 ///////////////////////////////////////////////////////////////////////////////
 
