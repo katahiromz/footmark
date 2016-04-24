@@ -48,8 +48,9 @@
     void Leave();
   };
 
-  inline std::vector<FootmarkLocation>& GetFootmarkStack() {
-    static std::vector<FootmarkLocation> s_stack;
+  typedef std::vector<FootmarkLocation>   FootmarkStackType;
+  inline FootmarkStackType& GetFootmarkStack() {
+    static FootmarkStackType s_stack;
     return s_stack;
   }
 
@@ -70,7 +71,7 @@
 
   inline void FootmarkPrintCallStack() {
     DebugPrint("CALL STACK:\n");
-    const std::vector<FootmarkLocation>& stack = GetFootmarkStack();
+    const FootmarkStackType& stack = GetFootmarkStack();
     for (size_t i = 0; i < stack.size(); ++i) {
       DebugPrint("+ %s (%u): %s\n", stack[i].m_file, stack[i].m_line,
                  stack[i].m_func);
