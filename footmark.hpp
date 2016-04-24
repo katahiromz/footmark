@@ -10,11 +10,17 @@
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////
-// DebugPrint
+// FootmarkDebugPrint
 
-#ifndef DebugPrint
-  #include <cstdio>
-  #define DebugPrint  printf
+#ifndef FootmarkDebugPrint
+  #ifdef DebugPrintA
+    #define FootmarkDebugPrint  DebugPrintA
+  #elif defined(DebugPrint)
+    #define FootmarkDebugPrint  DebugPrint
+  #else
+    #include <cstdio>
+    #define FootmarkDebugPrint  printf
+  #endif
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -56,25 +62,25 @@
 
   inline void FootmarkLocation::Enter() {
     GetFootmarkStack().push_back(*this);
-    DebugPrint("%s (%u): entering %s\n", m_file, m_line, m_func);
+    FootmarkDebugPrint("%s (%u): entering %s\n", m_file, m_line, m_func);
   }
   inline void FootmarkLocation::Leave() {
     if (GetFootmarkStack().size()) {
-      DebugPrint("%s: leaving %s\n", m_file, m_func);
+      FootmarkDebugPrint("%s: leaving %s\n", m_file, m_func);
       GetFootmarkStack().pop_back();
     } else {
-      DebugPrint("Footmark: ERROR: stack was broken.\n");
-      DebugPrint("Footmark: NOTE: DebugPrint must be thread-safe.\n");
+      FootmarkDebugPrint("Footmark: ERROR: stack was broken.\n");
+      FootmarkDebugPrint("Footmark: FootmarkDebugPrint must be thread-safe.\n");
       assert(0);
     }
   }
 
   inline void FootmarkPrintCallStack() {
-    DebugPrint("### CALL STACK ###\n");
+    FootmarkDebugPrint("### CALL STACK ###\n");
     const FootmarkStackType& stack = GetFootmarkStack();
     for (size_t i = 0; i < stack.size(); ++i) {
-      DebugPrint("+ %s (%u): %s\n", stack[i].m_file, stack[i].m_line,
-                 stack[i].m_func);
+      FootmarkDebugPrint("+ %s (%u): %s\n", stack[i].m_file, stack[i].m_line,
+                         stack[i].m_func);
     }
   }
 #endif  // ndef NDEBUG
