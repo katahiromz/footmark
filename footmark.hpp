@@ -1,5 +1,5 @@
 // footmark.hpp --- footmark for C++ debugging
-// This file is public domain software (PDS)
+// This file is public domain software (PDS).
 ///////////////////////////////////////////////////////////////////////////////
 
 #ifndef FOOTMARK_HPP_
