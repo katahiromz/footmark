@@ -1,5 +1,6 @@
 // footmark.hpp --- footmark for C++ debugging
 // This file is public domain software (PDS).
+// NOTE: Footmark is not thread-safe. Don't use it in multithread function.
 ///////////////////////////////////////////////////////////////////////////////
 
 #ifndef FOOTMARK_HPP_
@@ -69,8 +70,8 @@
       FootmarkDebugPrint("%s: leaving %s\n", m_file, m_func);
       GetFootmarkStack().pop_back();
     } else {
-      FootmarkDebugPrint("Footmark: ERROR: stack was broken.\n");
-      FootmarkDebugPrint("Footmark: FootmarkDebugPrint must be thread-safe.\n");
+      FootmarkDebugPrint("Footmark: ERROR: The stack of footmarks was broken.\n");
+      FootmarkDebugPrint("NOTE: Footmark is not thread-safe.\n");
       assert(0);
     }
   }
