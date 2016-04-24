@@ -70,7 +70,7 @@
   }
 
   inline void FootmarkPrintCallStack() {
-    DebugPrint("CALL STACK:\n");
+    DebugPrint("### CALL STACK ###\n");
     const FootmarkStackType& stack = GetFootmarkStack();
     for (size_t i = 0; i < stack.size(); ++i) {
       DebugPrint("+ %s (%u): %s\n", stack[i].m_file, stack[i].m_line,

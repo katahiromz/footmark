@@ -17,7 +17,7 @@ footmark --- C++デバッグ用の足跡
 
 FOOTMARK_PRINT_CALL_STACK() マクロは次のような出力を生成します。
 
-    CALL STACK:
+    ### CALL STACK ###
     + a.cpp (13): main
     + a.cpp (7): func_1
     + b.cpp (5): func_2
