@@ -46,7 +46,6 @@ int main(void) {
 #ifdef _WIN32
   ::SetUnhandledExceptionFilter(MyUnhandledExceptionFilter);
   func_3();
-  printf("OK\n");
 #endif
   return 0;
 }
