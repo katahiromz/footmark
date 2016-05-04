@@ -15,6 +15,7 @@ You may want to put FOOTMARK() at top of every function definition.
 
 The FOOTMARK_PRINT_CALL_STACK() macro generates output as follows:
 
+    test.c (3): FOOTMARK_PRINT_CALL_STACK()
     ### CALL STACK ###
     + a.cpp (13): main
     + a.cpp (7): func_1
