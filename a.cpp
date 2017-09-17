@@ -11,9 +11,9 @@
 int func_2(void);
 
 int func_1(void) {
-  FOOTMARK();
+  FOOTMARK_FORMAT("We entered func_%d. One plus one is %d.\n", 1, 1 + 1);
   func_2();
-  return 0;
+  FOOTMARK_RETURN_INT(0);
 }
 
 void func_5(void) {
